@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="styles/jquery-ui.css">
     <link rel="stylesheet" href="styles/jquery-ui.structure.css">
     <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+    <link rel="stylesheet" href="styles/map.css">
     <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/steps.css">
 
 
 </head>
@@ -24,327 +27,186 @@
     <nav class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Step On Set</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="file:///C:/Users/consp/Documents/Step%20On%20Set/index.html">Step On Set</a>
         </div>
-
+    
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Link</a>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="file:///C:/Users/consp/Documents/Step%20On%20Set/submitLocation.html">Submit a location</a>
+            </li>
+            <li>
+              <a href="#">Link</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Action</a>
                 </li>
                 <li>
-                    <a href="#">Link</a>
+                  <a href="#">Another action</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">Action</a>
-                        </li>
-                        <li>
-                            <a href="#">Another action</a>
-                        </li>
-                        <li>
-                            <a href="#">Something else here</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">Separated link</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">One more separated link</a>
-                        </li>
-                    </ul>
+                <li>
+                  <a href="#">Something else here</a>
                 </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#">Separated link</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#">One more separated link</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+            <div class="navbar-form navbar-left">
+              <input id="searchBar" type="text" class="form-control" placeholder="Search">
+            
+            <button id="submitSearch" type="submit" class="btn btn-default">Submit</button>
+          </div>
+          <div id="logged-out-options">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+            </li>
+            <li>
+              <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
+            </li>
+          </ul>
+          </div>
+          <div id="logged-in-options">
+            <ul class="nav navbar-nav navbar-right">
+                <p id="sign-in-status" class="navbar-text">Logged in as</p> 
+                  <li>
+                      <a id="logout-confirm" href="#">Logout</a>
+                    </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <div id="logged-out-options">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
-                    </li>
-                </ul>
-            </div>
-            <div id="logged-in-options" class="nav navbar-nav navbar-right">
-                Firebase sign-in status:
-                <span id="sign-in-status">Unknown</span>
-                <button id="logout-confirm">Sign Out</button>
             </div>
         </div>
         <!-- /.navbar-collapse -->
-    </nav>
-
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+      </nav>
+    
+      <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Login to Your Account</h1>
-                <br>
-
-                <input id="email-signin" type="text" name="email" placeholder="Email">
-                <input id="password-signin" type="password" name="psw" placeholder="Password">
-                <input id="sign-in-confirm" type="submit" name="login" class="login loginmodal-submit" data-dismiss="modal" value="Login">
-
-                <div class="login-help">
-                    <a href="#">Login</a> -
-                    <a href="#">Forgot Password</a>
-                </div>
+          <div class="loginmodal-container">
+            <div>
+            <h1>Login to Your Account</h1>
+            <br>
+            <form id="signInForm">
+            <input id="email-signin" type="text" name="email" placeholder="Email">
+            <input id="password-signin" type="password" name="psw" placeholder="Password">
+            <input id="sign-in-confirm" type="submit" name="login" class="login loginmodal-submit" value="Login">
+            </form>
             </div>
+            
+            <div class="login-help">
+              <a id="password-reset" href="#">Forgot Password</a>
+            </div>
+          </div>
+    
         </div>
-    </div>
-
-    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+      </div>
+    
+      <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
         style="display: none;">
         <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <h1>Register an Account</h1>
-                <br>
-
-                <input class="sign-up" id="name" type="text" name="name" placeholder="Full Name">
-                <input class="sign-up" id="email" type="text" name="email" placeholder="Email">
-                <input class="sign-up" id="password" type="password" name="psw" placeholder="Password">
-                <input id="sign-up-confirm" type="submit" name="login" class="login loginmodal-submit" data-dismiss="modal" value="Register">
-
-                <div class="login-help">
-                    <a href="#">Register</a> -
-                    <a href="#">Forgot Password</a>
-                </div>
+          <div class="loginmodal-container">
+            <h1>Register an Account</h1>
+            <br>
+            
+            <form id="registerForm" action="#">
+            <input class="sign-up" id="name" type="text" name="name" placeholder="Full Name">
+            <input class="sign-up" id="email" type="text" name="email" placeholder="Email">
+            <input class="sign-up" id="password" type="password" name="psw" placeholder="Password">
+            <input id="sign-up-confirm" type="submit" name="login" class="login loginmodal-submit" value="Register">
+            </form>
+    
+            <div class="login-help">
+              <a href="#">Register</a> -
+              <a href="#">Forgot Password</a>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div>
-        <div class="row" align="center">
-                <fieldset>
-                  <legend>Are you submitting a movie or TV show? </legend>
-                  <label for="radio-1">Movie</label>
-                  <input type="radio" id="movieRadio" name="movie-tv" id="radio-1" value="movie">
-                  <label for="radio-2">TV Show</label>
-                  <input type="radio" id="tvRadio" name="movie-tv" id="radio-2" value="tv">
-                </fieldset>
-            <div class="ui-widget col-md-4">
-                Step 1: Select Movie
-                <br>
-                <label for="movie">Movie: </label>
+
+    <div id="wizardContainer" class="row">
+        <h3>Movie/TV Show</h3>
+        <section>
+            <fieldset>
+                <legend>Are you submitting a movie or TV show? </legend>
+                <label for="radio-1">Movie</label>
+                <input type="radio" id="movieRadio" name="movie-tv" id="radio-1" value="movie">
+                <label for="radio-2">TV Show</label>
+                <input type="radio" id="tvRadio" name="movie-tv" id="radio-2" value="tv">
+            </fieldset>
+            <div id="searchHelp" class="ui-widget col-sm-4">
+                <p>Step 1: Search for your title</p>
+                <label for="movie"> </label>
                 <input id="movie">
                 <button id="getMovie">Search</button>
             </div>
 
-            <div class="col-md-4" id="movieInfo">
+            <div class="col-sm-4" id="movieInfo">
 
             </div>
 
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <img id="moviePoster" height="300" width="200" src="">
             </div>
-        </div>
-        <div>
+        </section>
+        <h3>Location</h3>
+        <section>
             Step 2: Select Location - Search your location to add a marker - drag the marker if you need to precisely adjust it - press
             submit location to confirm selection
             <br>
+
             <div id="map-container">
                 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                 <div id="map"></div>
             </div>
             <div id="marker-info"></div>
-            <button id="submitLocation">Submit</button>
             <br>
             <br>
+        </section>
+        <h3>Pager</h3>
+        <section>
+            <p>The next and previous buttons help you to navigate through your content.</p>
+        </section>
 
-
-        </div>
-        <div>
-            Step 3: Additional Information
-            <br>
-            <input type="text" placeholder="Description">
-            <input type="text" placeholder="Nearest Airport">
-            <br>
-            <h1>Photo Gallery Upload - DropzoneJS </h1>
-            <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
-
-        </div>
-        <br>
-        <br>
-        <button id="confirmSubmision">confirm</button>
-        <br>
-        <br>
     </div>
+
+
+
+
 
     <script src="scripts/jquery-3.3.1.js"></script>
     <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery.steps.min.js"></script>
+    <script src="scripts/jquery.validate.js"></script>
     <script src="scripts/movieInfo.js"></script>
     <script src="scripts/sign-up.js"></script>
-    <script src="scripts/dropzone.js"></script>
+    <script src="scripts/submitLocation.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-        var movieId;
-        var currentLat;
-        var currentLng;
-        var userId;
-        var description;
-        var airport;
-        var imgUrl;
-
-        function initAutocomplete() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: -33.8688,
-                    lng: 151.2195
-                },
-                zoom: 13,
-                mapTypeId: 'roadmap'
-            });
-
-            // Create the search box and link it to the UI element.
-            var input = document.getElementById('pac-input');
-            var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function () {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-            searchBox.addListener('places_changed', function () {
-                var places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
-                }
-
-                // Clear out the old markers.
-                markers.forEach(function (marker) {
-                    marker.setMap(null);
-                });
-                markers = [];
-
-                // For each place, get the icon, name and location.
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function (place) {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-                    var icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
-                    };
-
-                    // Create a marker for each place.
-                    markers.push(new google.maps.Marker({
-                        map: map,
-                        icon: icon,
-                        title: place.name,
-                        position: place.geometry.location,
-                        draggable: true
-                    }));
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-
-                map.fitBounds(bounds);
-
-                google.maps.event.addListener(markers[0], 'dragend', function (evt) {
-                    document.getElementById('marker-info').innerHTML =
-                        '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) +
-                        ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
-                    console.log(evt);
-                    currentLat = evt.latLng.lat();
-                    currentLng = evt.latLng.lng();
-                });
-
-                google.maps.event.addListener(markers[0], 'dragstart', function (evt) {
-                    document.getElementById('marker-info').innerHTML =
-                        '<p>Currently dragging marker...</p>';
-                });
-            });
-
-            console.log(currentLat);
-        }
-
-        $("#submitLocation").on('click', function () {
-            if (currentLat === undefined) {
-                console.log(
-                    "Please select your location on the map first by searching and then dragging the marker"
-                );
-                alert("Please select your location on the map first by searching and then dragging the marker");
-            } else {
-                $("#map-container").hide();
-            }
-
-            console.log(currentLat);
-        });
-
-        function writeNewLocation(){
-            var postData = {
-                movieId: movieId,
-                lat: currentLat,
-                lng: currentLng,
-                //submittedBy: userId,
-            };
-
-            // Get a key for a new Post.
-            var newPostKey = firebase.database().ref().child('locations').push().key;
-
-            // Write the new post's data simultaneously in the posts list and the user's post list.
-            var updates = {};
-            updates['/locations/' + newPostKey] = postData;
-
-            return firebase.database().ref().update(updates);
-        }
-
-         $("#confirmSubmision").on('click', function () {
-
-            writeNewLocation();
-
-         });
-
+    <script src="scripts/initFirebase.js"></script>
     </script>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkzEtWPlraFCoPv_GTUsqUkuSKqBTVa0c&libraries=places&callback=initAutocomplete">
-    </script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBtoLzfo_kJzzslJVQPymjng6IJy6Vx03k",
-            authDomain: "step-on-set.firebaseapp.com",
-            databaseURL: "https://step-on-set.firebaseio.com",
-            projectId: "step-on-set",
-            storageBucket: "step-on-set.appspot.com",
-            messagingSenderId: "843228176455"
-        };
-        firebase.initializeApp(config);
     </script>
 </body>
 
