@@ -1,13 +1,31 @@
 $(document).ready(function () {
 
+    //ensures no live sessions are active when login screen is shown
+    if (document.location.href == "http://localhost/steponset/login.html"){
+         firebase.auth().signOut()
+  }
+
+   function returnAllLocations(){
+        firebase.firestore().collection("locations").get().then(snapshot => {
+            snapshot.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+            });
+        })
+    }
+
+    function returnLocationsForId(){
+        firebase.firestore().collection("locations").where("movieId", "==", 1399).get().then(snapshot => {
+            snapshot.forEach(doc => {
+                console.log(doc.id, '=>', doc.data());
+            });
+        });
+    } 
+
     //login state
     firebase.auth().onAuthStateChanged(function (user) {
         console.log("fired")
-
         if (user) {
-            if (window.location.href == "file:///C:/Users/consp/Documents/Step%20On%20Set/login.html"){
-            window.location.replace("file:///C:/Users/consp/Documents/Step%20On%20Set/index.html");
-        }
+            console.log("signed in");
             // User is signed in.
             var displayName = user.displayName;
             var email = user.email;
@@ -19,10 +37,8 @@ $(document).ready(function () {
 
             $("#sign-in-status").text('Signed in as' + " " + user.email);
             $("#logged-in-options").show();
-        } else {
-            if(window.location.href != "file:///C:/Users/consp/Documents/Step%20On%20Set/login.html"){
-            window.location.replace("file:///C:/Users/consp/Documents/Step%20On%20Set/login.html");
-        }
+        } else if (window.location.href !== "http://localhost/steponset/login.html"){
+            window.location.replace("login.html");
         }
     });
 
@@ -55,7 +71,7 @@ $(document).ready(function () {
         if ($("#registerForm").valid()) {
             firebase.auth().createUserWithEmailAndPassword(userEmail, password).then(function (user) {
                 $(".registermodal-container").empty().append("<p>Thank you registering " + fullName + ". Please check your emails and follow " + 
-                "the link to complete your sign up.<p>  <input id=\"sign-up-confirm\" type=\"submit\" onclick=\"location.href='file:///C:/Users/consp/Documents/Step%20On%20Set/index.html';\" name=\"login\" class=\"login loginmodal-submit\" value=\"Continue\">")
+                "the link to complete your sign up.<p>  <input id=\"sign-up-confirm\" type=\"submit\" onclick=\"location.href='index.html';\" name=\"login\" class=\"login loginmodal-submit\" value=\"Continue\">")
                 var id = user.uid;
                 sendEmailVerification();
                 //write users details to firestore
@@ -63,10 +79,10 @@ $(document).ready(function () {
                     email: userEmail,
                     name: fullName
                 }) 
-            }).catch(function (error) {
+            .catch(function (error) {
                     console.error("Error writing document: ", error);
                 });
-            
+            })
         };
     });
 
@@ -85,7 +101,7 @@ $(document).ready(function () {
 
         if ($("#signInForm").valid()) {
             firebase.auth().signInWithEmailAndPassword(email, password).then(function (){
-                window.location.replace("file:///C:/Users/consp/Documents/Step%20On%20Set/index.html");
+                window.location.replace("index.html");
             }).catch(function (error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -109,7 +125,7 @@ $(document).ready(function () {
     $("#logout-confirm").on('click', function (event) {
         event.preventDefault();
         firebase.auth().signOut().then(function(){
-            window.location.replace("file:///C:/Users/consp/Documents/Step%20On%20Set/login.html");
+            window.location.replace("login.html");
         });
     });
 

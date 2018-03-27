@@ -31,14 +31,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="file:///C:/Users/consp/Documents/Step%20On%20Set/index.html">Step On Set</a>
+      <ul class="nav navbar-nav">
+        <a class="navbar-brand" href="index.html">Step On Set</a>
+        <img class="navbar-brand" id="moviedbpowered" src="images/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png">
+      </ul>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="file:///C:/Users/consp/Documents/Step%20On%20Set/submitLocation.html">Submit a location</a>
+          <a href="submitLocation.html">Submit a location</a>
         </li>
         <li>
           <a href="#">Link</a>
@@ -68,161 +71,32 @@
           </ul>
         </li>
       </ul>
-        <div class="navbar-form navbar-left">
-          <input id="searchBar" type="text" class="form-control" placeholder="Search">
-        
-        <button id="submitSearch" type="submit" class="btn btn-default">Submit</button>
+      <div class="navbar-form navbar-left">
       </div>
       <div id="logged-in-options">
         <ul class="nav navbar-nav navbar-right">
-            <p id="sign-in-status" class="navbar-text">Logged in as</p> 
-              <li>
-                  <a id="logout-confirm" href="#">Logout</a>
-                </li>
+          <p id="sign-in-status" class="navbar-text">Logged in as</p>
+          <li>
+            <a id="logout-confirm" href="#">Logout</a>
+          </li>
         </ul>
-        </div>
+      </div>
     </div>
     <!-- /.navbar-collapse -->
   </nav>
 
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="loginmodal-container">
-        <div>
-        <h1>Login to Your Account</h1>
-        <br>
-        <form id="signInForm">
-        <input id="email-signin" type="text" name="email" placeholder="Email">
-        <input id="password-signin" type="password" name="psw" placeholder="Password">
-        <input id="sign-in-confirm" type="submit" name="login" class="login loginmodal-submit" value="Login">
-        </form>
-        </div>
-        
-        <div class="login-help">
-          <a id="password-reset" href="#">Forgot Password</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-    style="display: none;">
-    <div class="modal-dialog">
-      <div class="loginmodal-container">
-        <h1>Register an Account</h1>
-        <br>
-        
-        <form id="registerForm" action="#">
-        <input class="sign-up" id="name" type="text" name="name" placeholder="Full Name">
-        <input class="sign-up" id="email" type="text" name="email" placeholder="Email">
-        <input class="sign-up" id="password" type="password" name="psw" placeholder="Password">
-        <input id="sign-up-confirm" type="submit" name="login" class="login loginmodal-submit" value="Register">
-        </form>
-
-        <div class="login-help">
-          <a href="#">Register</a> -
-          <a href="#">Forgot Password</a>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="underline">
+          Latest Titles
+        </h3>
+        <div class="row latest-titles" align="center">
+          
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container">
-
-    <section id="row1">
-    <h1 class="sectionTitle">Continue Watching for Username</h1>
- <div id="mySidenav" class="sidenav">
-   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-   <a href="#">Movie 1</a>
-   
- </div>
-    
-    <div class="examples">
-       <ul class="img-list">
-          <li class="image">
-             <a href="#">
-                <img id="box1" src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" onclick="openNav()" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
-         
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
- 
-       </ul>
- 
-    </div>
- 
-    </section>
-    
-    <section id="row2">
-    <h1 class="sectionTitle">TV Shows</h1>
-    <div class="examples">
-       <ul class="img-list">
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><span>Title Here...<br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br><i class="fa fa-chevron-down" aria-hidden="true"></i></span></span>
-             </a>
-          </li>
- 
-       </ul>
-    </div>
-    </section>
-    <h1 class="sectionTitle">Row 3</h1>
-    <div class="examples">
-       <ul class="img-list">
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><i class="fa fa-chevron-up" aria-hidden="true"></i><br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br>Title Here...</span></span>
-             </a>
-          </li>
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><i class="fa fa-chevron-up" aria-hidden="true"></i><br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br>Title Here...</span></span>
-             </a>
-          </li>
- 
-          <li class="image">
-             <a href="#">
-                <img src="http://placehold.it/280x150" width="280" height="150" />
-                <span class="text-content"><i class="fa fa-chevron-up" aria-hidden="true"></i><br><br><i class="fa fa-4x  fa-play-circle-o"></i><br><br>Title Here...</span></span>
-             </a>
-          </li>
- 
-       </ul>
-    </div>
- </div>
 
 
   <script src="scripts/jquery-3.3.1.js"></script>
@@ -230,6 +104,7 @@
   <script src="scripts/jquery.validate.js"></script>
   <script src="scripts/movieInfo.js"></script>
   <script src="scripts/sign-up.js"></script>
+  <script src="scripts/homeContent.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>

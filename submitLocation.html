@@ -33,14 +33,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="file:///C:/Users/consp/Documents/Step%20On%20Set/index.html">Step On Set</a>
+          <a class="navbar-brand" href="index.html">Step On Set</a>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active">
-              <a href="file:///C:/Users/consp/Documents/Step%20On%20Set/submitLocation.html">Submit a location</a>
+              <a href="submitLocation.html">Submit a location</a>
             </li>
             <li>
               <a href="#">Link</a>
@@ -173,16 +173,19 @@
             <br>
 
             <div id="map-container">
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <input id="pac-input" class="controls" placeholder="Search Box">
                 <div id="map"></div>
             </div>
             <div id="marker-info"></div>
             <br>
             <br>
         </section>
-        <h3>Pager</h3>
+        <h3>Additional Information</h3>
         <section>
-            <p>The next and previous buttons help you to navigate through your content.</p>
+          <form id="locationForm" action="#">
+          <input class="sign-up" id="fictionalName" type="text" placeholder="Fictional Name">
+          <input class="sign-up" id="description" type="text" placeholder="Description">
+          </form>
         </section>
 
     </div>
@@ -195,7 +198,6 @@
     <script src="scripts/jquery-ui.js"></script>
     <script src="scripts/jquery.steps.min.js"></script>
     <script src="scripts/jquery.validate.js"></script>
-    <script src="scripts/movieInfo.js"></script>
     <script src="scripts/sign-up.js"></script>
     <script src="scripts/submitLocation.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
