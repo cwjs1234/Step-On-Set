@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-    var latestTitles = [];
+    var latestTvTitles = [];
+    var latestMovieTitles = [];
 
     function removeDuplicates(arr){
         var unique_array = []
@@ -13,39 +14,63 @@ $(document).ready(function () {
     }
 
 
-    
+    //<<----- Get Latest TV Titles ----->>
     firebase.firestore().collection("locations").where("isTv", "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            latestTitles.push(doc.data().titleId);
+            latestTvTitles.push(doc.data().titleId);
         });
-        latestTitles = removeDuplicates(latestTitles);
-        showLatestTvShows();
+        latestTvTitles = removeDuplicates(latestTvTitles);
+        showLatest("tv", ".latest-tv-titles", latestTvTitles);
     })
     .catch(function(error) {
     });
 
+     //<<----- Get Latest Movie Titles ----->>
+     firebase.firestore().collection("locations").where("isTv", "==", false)
+     .get()
+     .then(function(querySnapshot) {
+         querySnapshot.forEach(function(doc) {
+             latestMovieTitles.push(doc.data().titleId);
+         });
+         latestMovieTitles = removeDuplicates(latestMovieTitles);
+         showLatest("movie", ".latest-movie-titles", latestMovieTitles );
+     })
+     .catch(function(error) {
+     }); 
 
-    function showLatestTvShows(){
+
+    function showLatest(type, div, array) {
     for (x=0; x<6; x++){
-
+    
         $.ajax({
             type: "GET",
-            url: "https://api.themoviedb.org/3/tv/" + latestTitles[x] + "?api_key=2a003eac1e43e6fe5bdc089dbc8e7c2e&language=en-US",
+            url: "https://api.themoviedb.org/3/" + type + "/" + array[x] + "?api_key=2a003eac1e43e6fe5bdc089dbc8e7c2e&language=en-US",
             dataType: "json",
 
             success: function (data) {
                 var posterPath = "https://image.tmdb.org/t/p/original" + data.poster_path;
-                var title = data.name;
+                var title;
+                if (type == "tv"){
+                    title = data.name;
+                } else if (type = "movie"){
+                    title = data.title;
+                }
                 console.log(posterPath);
-                $(".latest-titles").append("<div class=\"col-md-2 titles\">" +
-                                           "<img alt=\"Bootstrap Image Preview\" src=" + posterPath + " width=\"260\" />" +
+                $(div).append("<div class=\"col-md-2 titles\">" +
+                                           "<img alt=\"Bootstrap Image Preview\" src=" + posterPath + " width=\"200\" id=\"" + data.id + "\" type=\"" + type + "\" />" +
                                            "<br> <span>" + title + " </span> </div>")
             }
         })
     }
 }
+
+$(document).on('click','.titles > img', function(){
+    type = $(this).attr("type");
+    id = $(this).attr("id");
+    window.location.replace("title.html?type=" + type + "&id=" + id );
+ }) 
     
 
 
