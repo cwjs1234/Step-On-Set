@@ -37,7 +37,7 @@ $(document).ready(function () {
 
             $("#sign-in-status").text('Signed in as' + " " + user.email);
             $("#logged-in-options").show();
-        } else if (window.location.href !== "http://localhost/steponset/login.html"){
+        } else if (!user && window.location.href !== "http://localhost/steponset/public/login.html"){
             window.location.replace("login.html");
         }
     });

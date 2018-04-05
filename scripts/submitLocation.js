@@ -4,6 +4,7 @@ var currentLng;
 var fictionalName;
 var description;
 var isTv;
+var imageUrl;
 
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -58,10 +59,11 @@ function initAutocomplete() {
                 scaledSize: new google.maps.Size(25, 25)
             };
 
+            var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
             // Create a marker for each place.
             markers.push(new google.maps.Marker({
                 map: map,
-                icon: icon,
+                icon: image,
                 title: place.name,
                 position: place.geometry.location,
                 draggable: true
@@ -73,6 +75,9 @@ function initAutocomplete() {
             } else {
                 bounds.extend(place.geometry.location);
             }
+
+            var photos = place.photos;
+            imageUrl = photos[0].getUrl({'maxWidth': 600, 'maxHeight': 600});
         });
 
         map.fitBounds(bounds);
@@ -105,10 +110,12 @@ $("#wizardContainer").steps({
             lat: currentLat,
             lng: currentLng,
             titleId: titleId,
+            name: $("#pac-input").val() ,
             fictionalName: fictionalName,
             isTv: isTv,
             description: description,
-            submittedBy: firebase.auth().currentUser.uid
+            submittedBy: firebase.auth().currentUser.uid,
+            image: imageUrl
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);

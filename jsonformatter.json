@@ -1,6 +1,0 @@
-﻿Parse error on line 8:
-...   },
-    "user2": ...,
-    "user3": .
-----------------------^
-Expecting 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '[', got 'undefined'

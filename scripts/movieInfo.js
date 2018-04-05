@@ -1,38 +1,12 @@
 $(document).ready(function () {
 
-  /*  function snapshotToArray(snapshot) {
-        var returnArr = [];
-    
-        snapshot.forEach(function(childSnapshot) {
-            var item = childSnapshot.val();
-            item.key = childSnapshot.key;
-    
-            returnArr.push(item);
-        });
-    
-        return returnArr;
-    };
-   
-      var idTest = 564;
-      return firebase.database().ref('/locations').once('value').then(function(snapshot) {
-        snapshot.forEach(function(childSnapshot){
-            if (childSnapshot.val().movieId == idTest){
-                console.log(childSnapshot.val().movieId);
-            }
-
-            
-
-        })
-      }); */
-    
-
     var movieUrl = "https://api.themoviedb.org/3/search/movie?api_key=2a003eac1e43e6fe5bdc089dbc8e7c2e&query=";
     var tvUrl = "https://api.themoviedb.org/3/search/tv?api_key=2a003eac1e43e6fe5bdc089dbc8e7c2e&query=";
     var passedUrl;
 
     $('input[type=radio][name=movie-tv]').change(function ( ) {
         if (this.value == 'movie') {
-            passedUrl = movieUrl;
+            passedUrl = movieUrl; 
         } else if (this.value == 'tv') {
             passedUrl = tvUrl;
         }

@@ -1,4 +1,32 @@
+function initMap(arr) {
+    var myLatLng = arr;
+  
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: myLatLng
+    });
+  
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+
+  $(document).on('click','.map-viewer', function(){
+    var lat = ($(this).attr("lat"));
+    var lng = ($(this).attr("lng"));
+    var latLng = {lat: parseFloat(lat), lng: parseFloat(lng)};
+    initMap(latLng);
+ }) 
+
 $(document).ready(function () {
+
+    var locationName;
+    var fictionalName;
+    var description;
+    var locationImageUrl;
+    var allLocations = [];
 
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -9,9 +37,38 @@ $(document).ready(function () {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
-    
+
     var id = getParameterByName('id');
     var type = getParameterByName('type');
+    var bool;
+
+        //<<----- Get Latest Locations ----->>
+        if (type == "movie"){
+           bool = false;
+        } else if (type == "tv"){
+           bool = true;
+        }
+
+        firebase.firestore().collection("locations").where("isTv", "==", bool).where("titleId", "==", parseInt(id))
+        .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                locationName = doc.data().name;
+                fictionalName = doc.data().fictionalName;
+                description = doc.data().description;
+                locationImageUrl = doc.data().image;
+                lat = doc.data().lat
+                lng = doc.data().lng
+                latLng = {lat: parseFloat(lat), lng: parseFloat(lng)}
+                allLocations.push(latLng);
+                $("#locations").append("<tr> <td> <img src=\"" + locationImageUrl + "\" width=\"400\"> </td> <td>" + locationName + "</td>" + 
+                                       "<td> " + fictionalName + " </td> <td> " + description + " </td> <td> <img class=\"map-viewer\" src=\"images/viewonmap.svg\" width=\"30\" lat=\"" + lat + "\" lng=\"" + lng + "\" data-toggle=\"modal\" data-target=\"#map-modal\"> </td> </tr>" );
+                
+            });
+            console.log(allLocations);
+        })
+        .catch(function(error) {
+        });
     
     $.ajax({
         type: "GET",
@@ -21,15 +78,19 @@ $(document).ready(function () {
         success: function (data) {
             var posterPath = "https://image.tmdb.org/t/p/original" + data.poster_path;
             var description = data.overview;
-            console.log(description);
             var title;
+            var relDate;
+            var background = "https://image.tmdb.org/t/p/original" + data.backdrop_path;
             if (type == "tv"){
                 title = data.name;
+                relDate = data.first_air_date;
             } else if (type = "movie"){
                 title = data.title;
+                relDate = data.release_date;
             }
+            $('.div-bg').css('background-image', 'url(' + background + ')');
             $("#mainPoster").attr("src", posterPath);
-            $("#titleName").append(title);
+            $("#titleName").append(title + " (" + relDate.substring(0,4) + ")");
             $("#titleDescription").append(description);
         }
     })
