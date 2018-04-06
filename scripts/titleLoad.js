@@ -1,26 +1,8 @@
-function initMap(arr) {
-    var myLatLng = arr;
-  
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
-      center: myLatLng
-    });
-  
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: 'Hello World!'
-    });
-  }
-
-  $(document).on('click','.map-viewer', function(){
-    var lat = ($(this).attr("lat"));
-    var lng = ($(this).attr("lng"));
-    var latLng = {lat: parseFloat(lat), lng: parseFloat(lng)};
-    initMap(latLng);
- }) 
-
 $(document).ready(function () {
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+      }); 
 
     var locationName;
     var fictionalName;
@@ -94,4 +76,35 @@ $(document).ready(function () {
             $("#titleDescription").append(description);
         }
     })
+
+
+    function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+        });
+      } 
+
+    $(document).on('click','.map-viewer', function(){
+        initMap() // creates fresh map no markers
+        var lat = ($(this).attr("lat"));
+        var lng = ($(this).attr("lng"));
+        latLng = {lat: parseFloat(lat), lng: parseFloat(lng)}
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title: 'Hello World!'
+          });
+        map.setCenter(latLng)
+     }) 
+
+    $("#multi-viewer").on('click', function(){
+        initMap(); //creates fresh map no markers
+        for (i = 0; i < allLocations.length; i++) {  
+            marker = new google.maps.Marker({
+                 position: allLocations[i],
+                 map: map
+            });
+            map.setCenter(allLocations[0]);
+     }
+    }); 
 });
