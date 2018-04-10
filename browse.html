@@ -1,0 +1,116 @@
+<html lang="en">
+    <header>
+            <meta charset="utf-8">
+
+            <title>Step On Set</title>
+            <meta name="Step On Set" content="Movie and TV Location Discovery">
+            <meta name="author" content="Connor Spence">
+          
+            <!-- Bootstrap core CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+            <link rel="stylesheet" href="styles/jquery-ui.css">
+            <link rel="stylesheet" href="styles/jquery-ui.structure.css">
+            <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+            <link rel="stylesheet" href="styles/modal.css">
+            <link rel="stylesheet" href="styles/style.css">
+    </header>
+
+    <body>
+
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="index.html">Step On Set</a>
+                <img class="navbar-brand" id="moviedbpowered" src="images/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png">
+              </ul>
+            </div>
+        
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active">
+                  <a href="submitLocation.html">Submit a location</a>
+                </li>
+                <li>
+                  <a href="browse.html">Browse Titles A-Z</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#">Action</a>
+                    </li>
+                    <li>
+                      <a href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a href="#">Something else here</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Separated link</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">One more separated link</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="navbar-form navbar-left">
+              </div>
+              <div id="logged-in-options">
+                <ul class="nav navbar-nav navbar-right">
+                  <p id="sign-in-status" class="navbar-text">Logged in as</p>
+                  <li>
+                    <a id="logout-confirm" href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+
+          <div class="container-fluid">
+                        <div class="row">
+                            <div id="movieList" class="col-md-6 text-center">
+                                <h3>
+                                    Movies
+                                </h3>
+                                <ul></ul>
+                    
+                            </div>
+
+                            <div id="tvList" class="col-md-6 text-center">
+                                <h3>
+                                    TV
+                                </h3>
+                                <ul></ul>
+
+                            </div>
+                        </div>
+            </div>
+
+          <script src="scripts/jquery-3.3.1.js"></script>
+          <script src="scripts/jquery-ui.js"></script>
+          <script src="scripts/jquery.validate.js"></script>
+          <script src="scripts/sign-up.js"></script>
+          <script src="scripts/browse.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-auth.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="scripts/initFirebase.js"></script>
+    </body>
+</html>

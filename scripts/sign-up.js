@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //ensures no live sessions are active when login screen is shown
-    if (document.location.href == "http://localhost/steponset/login.html"){
+    if (document.location.href == "http://localhost/steponset/public/login.html"){
          firebase.auth().signOut()
   }
 

@@ -33,7 +33,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Step On Set</a>
+          <ul class="nav navbar-nav">
+            <a class="navbar-brand" href="index.html">Step On Set</a>
+            <img class="navbar-brand" id="moviedbpowered" src="images/408x161-powered-by-rectangle-green-bb4301c10ddc749b4e79463811a68afebeae66ef43d17bcfd8ff0e60ded7ce99.png">
+          </ul>
         </div>
     
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,7 +46,7 @@
               <a href="submitLocation.html">Submit a location</a>
             </li>
             <li>
-              <a href="#">Link</a>
+              <a href="browse.html">Browse Titles A-Z</a>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
@@ -70,29 +73,16 @@
               </ul>
             </li>
           </ul>
-            <div class="navbar-form navbar-left">
-              <input id="searchBar" type="text" class="form-control" placeholder="Search">
-            
-            <button id="submitSearch" type="submit" class="btn btn-default">Submit</button>
-          </div>
-          <div id="logged-out-options">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-            </li>
-            <li>
-              <a href="#" data-toggle="modal" data-target="#register-modal">Register</a>
-            </li>
-          </ul>
+          <div class="navbar-form navbar-left">
           </div>
           <div id="logged-in-options">
             <ul class="nav navbar-nav navbar-right">
-                <p id="sign-in-status" class="navbar-text">Logged in as</p> 
-                  <li>
-                      <a id="logout-confirm" href="#">Logout</a>
-                    </li>
+              <p id="sign-in-status" class="navbar-text">Logged in as</p>
+              <li>
+                <a id="logout-confirm" href="#">Logout</a>
+              </li>
             </ul>
-            </div>
+          </div>
         </div>
         <!-- /.navbar-collapse -->
       </nav>

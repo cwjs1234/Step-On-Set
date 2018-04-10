@@ -13,7 +13,7 @@ $(document).ready(function () {
         return unique_array;
     }
 
-
+    
     //<<----- Get Latest TV Titles ----->>
     firebase.firestore().collection("locations").where("isTv", "==", true)
     .get()
@@ -27,7 +27,7 @@ $(document).ready(function () {
     .catch(function(error) {
     });
 
-     //<<----- Get Latest Movie Titles ----->>
+    //<<----- Get Latest Movie Titles ----->>
      firebase.firestore().collection("locations").where("isTv", "==", false)
      .get()
      .then(function(querySnapshot) {
@@ -71,6 +71,8 @@ $(document).on('click','.titles > img', function(){
     id = $(this).attr("id");
     window.location.replace("title.html?type=" + type + "&id=" + id );
  }) 
+
+
     
 
 
