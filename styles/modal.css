@@ -95,6 +95,9 @@
   font-size: 12px;
 }
 
+#password-reset-container{
+  display: none;
+}
 
 
 

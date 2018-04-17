@@ -111,4 +111,35 @@ $(document).ready(function () {
         });
     });
 
+    //forgot password UI change
+    $("#password-reset").on("click", function(event){
+        event.preventDefault();
+
+        $("#login-content, .login-help").hide();
+        $("#password-reset-container").show();
+    })
+
+    function returnToLogin(){
+        $("#password-reset-container").hide()
+        $("#login-content, .login-help").show();
+    }
+
+    $(document).on('click','#password-reset-confirm', function(){
+        var email = $("#email-passwordreset").val();
+        console.log(email);
+        firebase.auth().sendPasswordResetEmail(email).then(function(){
+            console.log("email sent")
+            returnToLogin();
+            $("#login-content").prepend("<p> Password reset has been sent! Check your emails </p>");
+        }).catch(function(error){
+            console.log(error);
+
+        })
+    })
+ 
+    $(document).on('click','#back-to-login', function(event){
+        event.preventDefault();
+        returnToLogin();
+    })
+
 });

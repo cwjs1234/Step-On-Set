@@ -23,7 +23,16 @@
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
               <div class="loginmodal-container">
-                <div>
+                 
+                <div id="password-reset-container"> 
+                      <h1>Reset Password</h1> 
+                      <p> Enter your email to reset your password <p> 
+                      <input id="email-passwordreset" type="text" name="email" placeholder="Email">  
+                      <input id="password-reset-confirm" type="submit" name="reset" class="login loginmodal-submit" value="Reset"> 
+                      <a id="back-to-login" href="#">Login</a> 
+                </div>
+
+                <div id="login-content">
                 <h1>Login to Your Account</h1>
                 <br>
                 <form id="signInForm">
@@ -59,8 +68,6 @@
                 </form>
         
                 <div class="login-help">
-                  <a href="#">Register</a> -
-                  <a href="#">Forgot Password</a>
                 </div>
               </div>
             </div>
