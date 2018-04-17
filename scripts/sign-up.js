@@ -1,30 +1,13 @@
 $(document).ready(function () {
 
-    //ensures no live sessions are active when login screen is shown
-    if (document.location.href == "http://localhost/steponset/public/login.html"){
-         firebase.auth().signOut()
-  }
-
-   function returnAllLocations(){
-        firebase.firestore().collection("locations").get().then(snapshot => {
-            snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data());
-            });
-        })
-    }
-
-    function returnLocationsForId(){
-        firebase.firestore().collection("locations").where("movieId", "==", 1399).get().then(snapshot => {
-            snapshot.forEach(doc => {
-                console.log(doc.id, '=>', doc.data());
-            });
-        });
-    } 
 
     //login state
     firebase.auth().onAuthStateChanged(function (user) {
         console.log("fired")
         if (user) {
+            if (window.location.href == "http://localhost/steponset/public/login.html"){
+                window.location.replace("index.html");
+            }
             console.log("signed in");
             // User is signed in.
             var displayName = user.displayName;
