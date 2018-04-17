@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-
-    //login state
+    //login state - checks for login status and provides user information
     firebase.auth().onAuthStateChanged(function (user) {
         console.log("fired")
         if (user) {
@@ -25,11 +24,11 @@ $(document).ready(function () {
         }
     });
 
-    //form validation 
-    $('form').each(function () { // attach to all form elements on page
-        $(this).validate({ // initialize plugin on each form
-            validClass: 'valid', // as per your configuration
-            rules: { // set rules as per your configuration
+    //form validation - jQuery validation method to validate login/register forms
+    $('form').each(function () { 
+        $(this).validate({ 
+            validClass: 'valid', 
+            rules: {
                 name: {
                     required: true
                 },
@@ -44,14 +43,14 @@ $(document).ready(function () {
         });
     });
 
-    //REGISTER
+    //REGISTER 
     $("#registerForm").on('submit', event => {
         event.preventDefault();
         var fullName = $("#name").val();
         var userEmail = $("#email").val();
         var password = $("#password").val();
 
-        if ($("#registerForm").valid()) {
+        if ($("#registerForm").valid()) { 
             firebase.auth().createUserWithEmailAndPassword(userEmail, password).then(function (user) {
                 $(".registermodal-container").empty().append("<p>Thank you registering " + fullName + ". Please check your emails and follow " + 
                 "the link to complete your sign up.<p>  <input id=\"sign-up-confirm\" type=\"submit\" onclick=\"location.href='index.html';\" name=\"login\" class=\"login loginmodal-submit\" value=\"Continue\">")
