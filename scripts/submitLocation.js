@@ -137,11 +137,6 @@ $("#wizardContainer").steps({
           }
       });
   
-      var titleChoice = [];
-      $("#movie").autocomplete({
-          source: titleChoice
-      });
-  
   
       $("#getMovie").on('click', function () {
   
